@@ -3,16 +3,14 @@ MAINTAINER Philip Graf <mail@philipgraf.de>
 
 ADD rootfs /
 
-RUN apk update && \
-  apk upgrade && \
-  apk add \
+RUN apk upgrade --no-cache && \
+  apk add --no-cache \
     ca-certificates \
     curl \
     bash \
     tar \
     s6 \
-    confd@testing && \
-  rm -rf /var/cache/apk/*
+    confd@testing
 
 ENV TERM xterm
 CMD ["bash"]
